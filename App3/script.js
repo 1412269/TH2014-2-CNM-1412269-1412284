@@ -19,9 +19,6 @@ $(function(){
 		} else {
 			$("#btn-app-control").css("display", "none");
 		}
-		// if($(this).find("td:eq(3)>span").text() != 'Located'){
-		// 	$("#dinh-vi").css("display", "inline");
-		// }
 	});
 	$(window).click(function(e){
 		if($("#body-content").has(event.target).length == 0 && !$("#body-content").is(event.target)){
@@ -31,196 +28,17 @@ $(function(){
 			}
 		}
 	});
-	// $("#data-table").on("click", "#dinh-vi", function(){
-	// 	initMap();
-	// 	geocodeAddress(geocoder, address, map);
-
-	// 	database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-	// 		if(data.val().phoneNumber == phone) {
-	// 			var update_table = "book-list/" + data.key + "/";
-	// 			database.ref(update_table).update({
-	// 				"state": false
-	// 			});
-	// 			return;
-	// 		}
-	// 	});
-	// });
 
 	$("#xem-dd-min").click(function(){
 		initMap();
 		geocodeAddress(geocoder, address, map);
 
-		// database.ref("cars/").orderByChild("ID").on("child_added", function(data) {
-		// 	if(data.val().ID == carNumber) {
-		// 		console.log(data.val().LocationCar)
-		// 		var directionsService = new google.maps.DirectionsService;
-		// 		var directionsDisplay = new google.maps.DirectionsRenderer;
-		// 		directionsDisplay.setMap(map);
-		// 		calculateAndDisplayRoute(directionsService, directionsDisplay, data.val().LocationCar, positionCustomer);
-		// 	}
-		// });
-
-	});
-
-	$("#tim-xe").click(function(){
-		labelCar = [];
-		xeSanSang = [];
-		var temp=0;
-		var choice = 0;
-		for(i=0; i<xe.length; i++){
-			if(xe[i].State==0){
-				getDistance(xe[i], 300, typeCar, function(){
-					temp++;
-					if((temp==xe.length) && ((xeSanSang.length==0) || (xeSanSang.length<10))){
-						console.log("Không tìm thấy xe trong 300m");
-						setTimeout(function(){
-							console.log("Tìm xe tiếp theo");
-							labelCar = [];
-							xeSanSang = [];
-							temp=0;
-							for(i=0; i<xe.length; i++){
-								if(xe[i].State==0){
-									getDistance(xe[i], 600, typeCar, function(){
-										temp++;
-										if((temp==xe.length) && ((xeSanSang.length==0) || (xeSanSang.length<10))){
-											console.log("Không tìm thấy xe trong 600m");
-											setTimeout(function(){
-												console.log("Tìm xe tiếp theo");
-												labelCar = [];
-												xeSanSang = [];
-												temp=0;
-												for(i=0; i<xe.length; i++){
-													if(xe[i].State==0){
-														getDistance(xe[i], 1000, typeCar, function(){
-															temp++;
-															if((temp==xe.length) && (xeSanSang.length==0)){
-																setTimeout(function(){
-																	alert("Không tìm thấy xe");
-																},3000);
-																choice=1;
-															}
-															if((temp==xe.length) && (xeSanSang.length!=0)){
-																if(xeSanSang.length>=10){
-																	xeSanSang.sort(function(a,b){
-																		return a.distance-b.distance;
-																	});
-																	for(j=0;j<10; j++){
-																		addMarker(xeSanSang[j].LocationCar, xeSanSang[j].desAddresses, xeSanSang[j].ID);
-																	}
-																	console.log(xeSanSang);
-																	console.log(xeSanSang[0]);
-																	var directionsService = new google.maps.DirectionsService;
-																	var directionsDisplay = new google.maps.DirectionsRenderer;
-																	directionsDisplay.setMap(map);
-																	calculateAndDisplayRoute(directionsService, directionsDisplay, xeSanSang[0].LocationCar, positionCustomer);
-																	database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-																		if(data.val().phoneNumber == phone) {
-																			var update_table = "book-list/" + data.key + "/";
-																			database.ref(update_table).update({
-																				"driverNumber": xeSanSang[0].ID
-																			});
-																			return;
-																		}
-																	});
-																} else {
-																	xeSanSang.sort(function(a,b){
-																		return a.distance-b.distance;
-																	});
-																	for(j=0;j<xeSanSang.length;j++){
-																		addMarker(xeSanSang[j].LocationCar, xeSanSang[j].desAddresses, xeSanSang[j].ID);
-																	}
-																	console.log(xeSanSang);
-																	console.log(xeSanSang[0]);
-																	var directionsService = new google.maps.DirectionsService;
-																	var directionsDisplay = new google.maps.DirectionsRenderer;
-																	directionsDisplay.setMap(map);
-																	calculateAndDisplayRoute(directionsService, directionsDisplay, xeSanSang[0].LocationCar, positionCustomer);
-																	database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-																		if(data.val().phoneNumber == phone) {
-																			var update_table = "book-list/" + data.key + "/";
-																			database.ref(update_table).update({
-																				"driverNumber": xeSanSang[0].ID
-																			});
-																			return;
-																		}
-																	});
-																}
-															}
-														});
-													} else {
-														temp++;
-													}
-												}
-											},5000);
-										}
-										if((temp==xe.length) && (xeSanSang.length>=10)){
-											xeSanSang.sort(function(a,b){
-												return a.distance-b.distance;
-											});
-											for(j=0;j<10; j++){
-												addMarker(xeSanSang[j].LocationCar, xeSanSang[j].desAddresses, xeSanSang[j].ID);
-											}
-											console.log(xeSanSang);
-											console.log(labelCar);
-											database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-												if(data.val().phoneNumber == phone) {
-													var update_table = "book-list/" + data.key + "/";
-													database.ref(update_table).update({
-														"driverNumber": xeSanSang[0].ID
-													});
-													return;
-												}
-											});
-										}
-									});
-} else {
-	temp++;
-}
-}
-},5000);
-}
-if((temp==xe.length) && (xeSanSang.length>=10)){
-	xeSanSang.sort(function(a,b){
-		return a.distance-b.distance;
-	});
-	for(j=0;j<10; j++){
-		addMarker(xeSanSang[j].LocationCar, xeSanSang[j].desAddresses, xeSanSang[j].ID);
-	}
-	console.log(xeSanSang);
-	database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-		if(data.val().phoneNumber == phone) {
-			var update_table = "book-list/" + data.key + "/";
-			database.ref(update_table).update({
-				"driverNumber": xeSanSang[0].ID
-			});
-			return;
-		}
-	});
-}
-});
-} else {
-	temp++;
-}
-if(choice==1){
-	break;
-}
-}
-});
-
-$("#hoan-thanh").click(function(){
-	if(phone!=null){
-		database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
-			if(data.val().phoneNumber == phone) {
-				var update_table = "book-list/" + data.key + "/";
-				database.ref(update_table).update({
-					"state": "Đã định vị xong"
-				});
-				return;
+		database.ref("cars/").orderByChild("ID").on("child_added", function(data) {
+			if(data.val().ID == carNumber) {
+				addMarker(data.val().LocationCar, data.val().ID, data.val().Type);
 			}
 		});
-		$("#btn-app-control").css("display", "none");
-		initMap();
-	}
-});
+
+	});
 
 });

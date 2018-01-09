@@ -22,10 +22,8 @@ function geocodeAddress(geocoder, address, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
-      console.log("Geocode xong");
       database.ref("cars/").orderByChild("ID").on("child_added", function(data) {
         if(data.val().ID == carNumber) {
-          console.log(data.val().LocationCar)
           var directionsService = new google.maps.DirectionsService;
           var directionsDisplay = new google.maps.DirectionsRenderer;
           directionsDisplay.setMap(map);
@@ -38,50 +36,15 @@ function geocodeAddress(geocoder, address, resultsMap) {
   });
 }
 
-var labelCar = [];
-var xeSanSang = [];
-
-function addMarker(position, destination, id){
+function addMarker(position, id, typeCar){
   var marker = new google.maps.Marker({
     position: position,
     map: map,
-    icon: './icon.png',
-    title: destination
+    icon: './icon1.png'
   });
-  labelCar.push(marker);
   marker.infowindow = new google.maps.InfoWindow();
-  marker.infowindow.setContent(destination+'\n'+'ID: '+id);
+  marker.infowindow.setContent('ID: '+id+'<br>'+'Type: '+typeCar);
   marker.infowindow.open(map, marker);
-}
-
-function getDistance(destination, distanceLimited, typeCar, callback){
-  var service = new google.maps.DistanceMatrixService;
-  service.getDistanceMatrix({
-    origins: [positionCustomer],
-    destinations: [destination.LocationCar],
-    travelMode: 'DRIVING',
-    unitSystem: google.maps.UnitSystem.METRIC,
-    avoidHighways: false,
-    avoidTolls: false
-  }, function(response, status) {
-    if (status !== 'OK') {
-      alert('Error was: ' + status);
-    } else {
-      var originList = response.originAddresses;
-      var destinationList = response.destinationAddresses;
-
-      // console.log(originList);
-      // console.log(destinationList);
-      // console.log(response.rows[0].elements[0].distance.value);
-      destination.distance = response.rows[0].elements[0].distance.value;
-      destination.desAddresses = destinationList[0];
-      if((response.rows[0].elements[0].distance.value <= distanceLimited)&&(destination.Type==typeCar)){
-        xeSanSang.push(destination);
-        // addMarker(destination.LocationCar, destinationList[0]);
-      }
-    }
-    callback();
-  });
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination) {

@@ -25,13 +25,3 @@ database.ref("book-list/").on("value", function(snapshot) {
 }, function (error) {
 	console.log("Error: " + error.code);
 });
-
-var xe = [];
-
-database.ref("cars/").on("value", function(snapshot) {
-	for(x in snapshot.val()){
-		xe.push(snapshot.val()[x]);
-	}
-}, function (error) {
-	console.log("Error: " + error.code);
-});
