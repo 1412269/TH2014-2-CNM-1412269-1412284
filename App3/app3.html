@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App 3</title>
+	<link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="body-content">
+   <div id="map"></div>
+   <div id="data-table"></div>
+   <span id="btn-app-control">
+    <button type="button" id="xem-dd-min" class="btn-xem">Xem đường đi</button>
+    <button type="button" id="xem-tx" class="btn-xem">Xem tài xế</button>
+  </span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="googleMaps.js"></script>
+<script src="firebase.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtXcuOUw97zE4Ry-YKl3MP62Ugag5udVw&callback=initMap">
+</script>
+<script src="script.js"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+  <table id="table">
+    <tr>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Vehicle</th>
+      <th>State</th>
+      <th>CarNumber</th>
+    </tr>
+    {{#each customers}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <td>{{state}}</td>
+      <td>
+        {{#ifCond state "đã có xe nhận"}}
+        {{driverNumber}}
+        {{/ifCond}}
+      </td>
+   </tr>
+   {{/each}}
+ </table>
+</script>
+<script type="text/javascript">
+	var source   = document.getElementById("entry-template").innerHTML;
+  var template = Handlebars.compile(source);
+</script>
+<script type="text/javascript">
+  Handlebars.registerHelper('ifCond', function(state, status, options) {
+    if(state==status) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+</script>
+</body>
+</html>

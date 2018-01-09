@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>App 2</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="body-content">
+   <div id="map"></div>
+   <div id="data-table"></div>
+   <span id="btn-app-control">
+    <button type="button" id="dinh-vi" class="dinh-vi">Geolocation</button>
+    <button type="button" id="tim-xe" class="tim-xe">Tìm xe</button>
+    <button type="button" id="hoan-thanh" class="tim-xe">Hoàn thành</button>
+  </span>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script src="googleMaps.js"></script>
+<script src="firebase.js"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtXcuOUw97zE4Ry-YKl3MP62Ugag5udVw&callback=initMap">
+</script>
+<script src="script.js"></script>
+<script id="entry-template" type="text/x-handlebars-template">
+  <table id="table">
+    <tr>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Vehicle</th>
+      <!-- <th>State</th> -->
+    </tr>
+    {{#each customers}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <!-- <td>
+       {{#ifState state 'Chưa định vị'}}
+       {{state}}
+       {{/ifState}}
+     </td> -->
+   </tr>
+   {{/each}}
+ </table>
+</script>
+<script type="text/javascript">
+	var source   = document.getElementById("entry-template").innerHTML;
+  var template = Handlebars.compile(source);
+</script>
+<script type="text/javascript">
+  Handlebars.registerHelper('ifState', function(state, status, options) {
+    if(state==status) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+</script>
+</body>
+</html>
