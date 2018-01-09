@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
+.card-container.card {
+    max-width: 350px;
+    padding: 40px 40px;
+}
+
+.btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/*
+ * Card component
+ */
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+.reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin #inputEmail,
+.form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+
+.form-signin input[type=email],
+.form-signin input[type=password],
+.form-signin input[type=text],
+.form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin {
+    /*background-color: #4d90fe; */
+    background-color: rgb(104, 145, 162);
+    /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+    background-color: rgb(12, 97, 33);
+}
+
+.forgot-password {
+    color: rgb(104, 145, 162);
+}
+
+.forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus{
+    color: rgb(12, 97, 33);
+}
+
+
+/* Code Ends */
+ </style>
+
+</head>
+
+<body>
+  <html>
+<head>
+<meta charset="UTF-8">
+<title>Sign In form</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<!-- <div id="main" class="container"> 	
+	<div  id="loginform"> 
+		<p class="login-username">
+		<label for="user_login">Email</label> 
+			<input type="text" id="email" class="input" placeholder="email" value="" size="20" /> 
+		</p> 
+		<p class="login-password"> 
+		<label for="user_pass">Password</label>
+		<input type="password"  id="password" class="input" placeholder="Password" value="" size="20" /> 
+		</p> 	
+		<p class="login-remember"><label><input type="checkbox" id="rememberme" value="forever"> Remember Me</label></p>
+		<p class="login-submit">
+			<button id="login" class="button-primary" onclick="login()">Log in</button>
+		</p>
+		<a href="/forgot_password" style="margin-top: 16px; float: left; font-size: 14px; color: #1976D2; text-decoration: none;">Fogot password?</a> 	
+		<a href="/signup" style="margin-top: 16px; float: right; font-size: 14px; color: #1976D2; text-decoration: none;">Sign Up?</a> 	
+	</div> -->
+
+   <div id="signin1">
+           <div class="container" >
+               <h1 class="text-center">Nhân viên đăng nhập </h1>
+               <div class="card card-container">
+                   <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                   <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                   <p id="profile-name" class="profile-name-card"></p>
+                   <form class="form-signin">
+                       <span id="reauth-email" class="reauth-email"></span>
+                       <input type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+                       <input type="password" id="password" class="form-control" placeholder="Password" required>
+                       <div id="remember" class="checkbox">
+                           <label>
+                               <input type="checkbox" value="remember-me"> Remember me
+                           </label>
+                       </div>
+                       <!--<button class="btn btn-lg btn-primary btn-block btn-signin" id = "Signin", name ="Signin">Sign in</button>-->
+
+                   </form><!-- /form -->
+                   <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id = "Sign", name ="Sign" onclick="login()">Log in</button>
+                   <br>
+                   <a href="/signup" class="forgot-password">
+                       Forgot the passwod?
+                   </a>
+               </div><!-- /card-container -->
+           </div><!-- /container -->
+       </div>
+
+
+<script src="/assests/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+
+		function login(){
+			var _email = document.getElementById("email").value;
+			var _password = document.getElementById("password").value;
+
+			$.ajax({
+				url: `http://localhost:3000/verifyLogin?email=${_email}&password=${_password}`,
+				dataType: 'json',
+				contentType: 'application/json',
+				timeout: 10000
+			}).done(function(data){
+				if (data.message == 'success'){
+					window.location = `./process`;
+				}else{
+					alert(data.message);
+				}	
+			
+			}).fail(function(jqXHR, textStatus, error){
+				alert(error);
+				console.log(textStatus);
+				console.log(error);
+				console.log(jqXHR);
+			});
+
+
+		}
+
+		
+	</script> 
+</body>
+</html>
+  
+  
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/mystyle.css">
+        <link rel="stylesheet" href="css/Sign_in.css">
+
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+        <![endif]-->
+        <!-- Add your site or application content here -->
+       <div id="signin1">
+           <div class="container" >
+               <h1 class="text-center">Nhân viên đăng nhập </h1>
+               <div class="card card-container">
+                   <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                   <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+                   <p id="profile-name" class="profile-name-card"></p>
+                   <form class="form-signin">
+                       <span id="reauth-email" class="reauth-email"></span>
+                       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                       <div id="remember" class="checkbox">
+                           <label>
+                               <input type="checkbox" value="remember-me"> Remember me
+                           </label>
+                       </div>
+                       <!--<button class="btn btn-lg btn-primary btn-block btn-signin" id = "Signin", name ="Signin">Sign in</button>-->
+
+                   </form><!-- /form -->
+                   <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" id = "Sign", name ="Sign">Sign out</button>
+                   <br>
+                   <a href="#" class="forgot-password">
+                       Forgot the passwod?
+                   </a>
+               </div><!-- /card-container -->
+           </div><!-- /container -->
+       </div>
+
+        <div id="book-car">
+            <div class="container">
+                <button class="btn btn-primary pull-right" type="submit" id = "Signout", name ="Signout">Sign out</button>
+                <div class="bbb">
+                    <h1 class="text-center">Nhập thông tin khách hàng</h1>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="name" class="col-sm-2 control-label">Tên Khách Hàng</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="First & Last Name"
+                                       value="">
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-2 control-label">Số điện thoại</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="0986564544" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Loại xe</label>
+                            <div class="col-sm-10">
+                                <!--<input type="text" class="form-control" id="TypeCar" name="Typecar" placeholder="Thường or cao cấp" value="">-->
+                                <select id="type" name="type">
+                                    <option value="Medium">Medium</option>
+                                    <option value="Premium">Premium</option>
+                                </select>
+                                <!--<div class="dropdown">-->
+                                <!--<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Loại xe-->
+                                <!--<span class="caret"></span></button>-->
+                                <!--<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
+                                <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Medium</a></li>-->
+                                <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Premium</a></li>-->
+                                <!--</ul>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="location" class="col-sm-2 control-label">Vị Trí</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="location" name="location"
+                                       placeholder="224/5, Nguyễn Văn Cừ" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="note" class="col-sm-2 control-label">Note</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="4" id="note" name="note"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2 text-center">
+                                <input id="book" name="book" type="submit" value="Đặt xe" class="btn btn-primary">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <! Will be used to display an alert to the user>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="text-center">
+                    <h1>Thông tin khách hàng</h1>
+                    <table class="table table-fixed">
+                        <thead>
+                        <tr>
+                            <th class="col-xs-1">STT</th>
+                            <th class="col-xs-2">Tên</th>
+                            <th class="col-xs-2">Số điện thoại</th>
+                            <th class="col-xs-2">Vị Trí</th>
+                            <th class="col-xs-2">Loại Xe</th>
+                            <th class="col-xs-2">Trạng thái đặt xe</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <div id="table1">
+
+                </div>
+            </div>
+        </div>
+
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src ="js/Sign_in.js"> </script>
+
+        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
