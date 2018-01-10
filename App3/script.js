@@ -14,7 +14,7 @@ $(function(){
 		phone = $(this).find("td:eq(1)").text();
 		typeCar = $(this).find("td:eq(2)").text();
 		if($(this).find("td:eq(3)").text()=='đã có xe nhận'){
-			carNumber = $(this).find("td:eq(4)").text();
+			carNumber = $(this).find("td:eq(5)").text();
 			$("#btn-app-control").css("display", "inline");
 		} else {
 			$("#btn-app-control").css("display", "none");

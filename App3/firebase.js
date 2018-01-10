@@ -12,16 +12,57 @@ var database = firebase.database();
 
 database.ref("book-list/").on("value", function(snapshot) {
 	var data = {
-		customers: []
+		customersCDV: [],
+		customersDDV: [],
+		customersDCXN: [],
+		customersBTC: [],
+		customersDHT: []
 	};
 	for(x in snapshot.val()){
-		// if(snapshot.val()[x].state=='Chưa định vị'){
-			data.customers.push(snapshot.val()[x]);
-		// }
+		if(snapshot.val()[x].state=='chưa định vị'){
+			var temp = new Date(snapshot.val()[x].timeBook);
+			var dataa = snapshot.val()[x];
+			dataa.timeBook = temp.toUTCString();
+			console.log(dataa);
+			data.customersCDV.push(dataa);
+		}
+		if(snapshot.val()[x].state=='đã định vị'){
+			var temp = new Date(snapshot.val()[x].timeBook);
+			var dataa = snapshot.val()[x];
+			dataa.timeBook = temp.toUTCString();
+			console.log(dataa);
+			data.customersDDV.push(dataa);
+		}
+		if(snapshot.val()[x].state=='đã có xe nhận'){
+			var temp = new Date(snapshot.val()[x].timeBook);
+			var dataa = snapshot.val()[x];
+			dataa.timeBook = temp.toUTCString();
+			console.log(dataa);
+			data.customersDCXN.push(dataa);
+		}
+		if(snapshot.val()[x].state=='bị từ chối'){
+			var temp = new Date(snapshot.val()[x].timeBook);
+			var dataa = snapshot.val()[x];
+			dataa.timeBook = temp.toUTCString();
+			console.log(dataa);
+			data.customersDCXN.push(dataa);
+		}
+		if(snapshot.val()[x].state=='đã hoàn thành'){
+			var temp = new Date(snapshot.val()[x].timeBook);
+			var dataa = snapshot.val()[x];
+			dataa.timeBook = temp.toUTCString();
+			console.log(dataa);
+			data.customersDHT.push(dataa);
+		}
 	}
 	$(function(){
 		$("#data-table").html(template(data));
 	});
+	data.customersCDV.sort(function(a, b){
+		var x = new Date(a.timeBook).getTime()/1000;
+		var y = new Date(b.timeBook).getTime()/1000;
+			return y - x;
+		});
 }, function (error) {
 	console.log("Error: " + error.code);
 });

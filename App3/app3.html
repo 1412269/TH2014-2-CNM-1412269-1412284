@@ -28,14 +28,72 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtXcuOUw97zE4Ry-YKl3MP62U
       <th>Phone</th>
       <th>Vehicle</th>
       <th>State</th>
+      <th>Time booking</th>
       <th>CarNumber</th>
     </tr>
-    {{#each customers}}
+    {{#each customersCDV}}
     <tr id="data-row">
       <td>{{address}}</td>
       <td>{{phoneNumber}}</td>
       <td>{{vehicle}}</td>
       <td>{{state}}</td>
+      <td>{{timeBook}}</td>
+      <td>
+        {{#ifCond state "đã có xe nhận"}}
+        {{driverNumber}}
+        {{/ifCond}}
+      </td>
+   </tr>
+   {{/each}}
+   {{#each customersDDV}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <td>{{state}}</td>
+      <td>{{timeBook}}</td>
+      <td>
+        {{#ifCond state "đã có xe nhận"}}
+        {{driverNumber}}
+        {{/ifCond}}
+      </td>
+   </tr>
+   {{/each}}
+   {{#each customersDCXN}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <td>{{state}}</td>
+      <td>{{timeBook}}</td>
+      <td>
+        {{#ifCond state "đã có xe nhận"}}
+        {{driverNumber}}
+        {{/ifCond}}
+      </td>
+   </tr>
+   {{/each}}
+   {{#each customersBTC}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <td>{{state}}</td>
+      <td>{{timeBook}}</td>
+      <td>
+        {{#ifCond state "đã có xe nhận"}}
+        {{driverNumber}}
+        {{/ifCond}}
+      </td>
+   </tr>
+   {{/each}}
+   {{#each customersDHT}}
+    <tr id="data-row">
+      <td>{{address}}</td>
+      <td>{{phoneNumber}}</td>
+      <td>{{vehicle}}</td>
+      <td>{{state}}</td>
+      <td>{{timeBook}}</td>
       <td>
         {{#ifCond state "đã có xe nhận"}}
         {{driverNumber}}

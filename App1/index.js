@@ -233,7 +233,7 @@ app.get('/addNewBookingDeal', (req, res) => {
 		console.log("zo verify");
 
 		if (phoneNumber != null && address != null && vehicleType != null){
-			writeNewPost(phoneNumber,address,vehicleType,"not location",note);
+			writeNewPost(phoneNumber,address,vehicleType,"chưa định vị",note);
 			let c = {
 		            message:"success"
 			 }
@@ -299,7 +299,8 @@ function writeNewPost(_phoneNumber,_address,_vehicleType, _state,_note) {
 	    address: _address,
 	    vehicle: _vehicleType,
 	    state: _state,
-	    note: _note
+	    note: _note,
+	    timeBook: new Date()
 	  };
 	console.log("new key");
 	  // Get a key for a new Post.

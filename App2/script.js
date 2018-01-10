@@ -219,7 +219,7 @@ $("#hoan-thanh").click(function(){
 		if(phone==null){
 			alert("Vui lòng định vị lại");
 		}
-		if((phone!=null)&&(inforCustomer.state=='chưa định vị')){
+		if((phone!=null)&&((inforCustomer.state=='chưa định vị')||(inforCustomer.state=='bị từ chối'))){
 			console.log("aaa");
 			database.ref("book-list/").orderByChild("phoneNumber").on("child_added", function(data) {
 				if(data.val().phoneNumber == phone) {
@@ -231,7 +231,7 @@ $("#hoan-thanh").click(function(){
 				}
 			});
 		}
-		if((phone!=null)&&(inforCustomer.state=='bị từ chối')){
+		if((phone==null)&&(inforCustomer.state=='bị từ chối')){
 			alert("Vui lòng định vị lại");
 		}
 	}
